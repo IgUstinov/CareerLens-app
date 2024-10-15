@@ -1,0 +1,12 @@
+[submodule "careerlens-backend"]
+	path = careerlens-backend
+	url = https://github.com/IgUstinov/CareerLens-backend
+[submodule "careerlens-frontend"]
+	path = careerlens-frontend
+	url = https://github.com/IgUstinov/CareerLens-frontend
+[submodule "careerlens-datacollector"]
+	path = careerlens-datacollector
+	url = https://github.com/IgUstinov/CareerLens-datacollector
+[submodule "careerlens-documentation"]
+	path = careerlens-documentation
+	url = https://github.com/IgUstinov/CareerLens-documentation
