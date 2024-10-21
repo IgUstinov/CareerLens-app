@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ./careerlens-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:3000"
+    environment:
+      - BACKEND_API_URL=http://backend:3000
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  datacollector:
+    build:
+      context: ./careerlens-datacollector
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./careerlens-backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_CONN_STRING=mongodb://mongodb:27017
+      - DB_NAME=careerlensdb
+      - JOB_COLLECTION_NAME=NoFilterJobs
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:6
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge
