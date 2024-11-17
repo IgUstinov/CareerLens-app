@@ -33,7 +33,7 @@ services:
       - PORT=3000
       - CORS_FRONTEND=http://localhost:4000
       - DB_CONN_STRING=mongodb://mongodb:27017
-      - DB_NAME=careerlensdb
+      - DB_NAME=career_lens
       - JOB_COLLECTION_NAME=NoFilterDoc
       - KAFKA_BROKER=kafka:9092
       - KAFKA_CLIENT_ID=backend
